@@ -25,8 +25,10 @@ app.get('/', function(req, res) {
         socket.broadcast.emit("receiveMsg",{ message: message.message,id:personId });
         
         socket.emit("receiveMsg",{ message: message.message,id:personId });
-        
+
       });
+
+      socket.on('drawing', (data:any) => socket.broadcast.emit('drawing', data));
 
       socket.emit("connection",{message:"connected"})
 

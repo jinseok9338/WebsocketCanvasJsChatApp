@@ -20,6 +20,7 @@ io.on('connection', function (socket) {
         socket.broadcast.emit("receiveMsg", { message: message.message, id: personId });
         socket.emit("receiveMsg", { message: message.message, id: personId });
     });
+    socket.on('drawing', (data) => socket.broadcast.emit('drawing', data));
     socket.emit("connection", { message: "connected" });
 });
 server.listen(8000, function () {
